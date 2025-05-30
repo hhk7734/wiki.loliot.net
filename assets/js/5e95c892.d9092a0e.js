@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwiki_loliot_net=self.webpackChunkwiki_loliot_net||[]).push([[9647],{7121:(e,s,r)=>{r.r(s),r.d(s,{default:()=>c});r(96540);var t=r(34164),i=r(1003),l=r(17559),n=r(22831),u=r(59504),a=r(74848);function c(e){return(0,a.jsx)(i.e3,{className:(0,t.A)(l.G.wrapper.docsPages),children:(0,a.jsx)(u.A,{children:(0,n.v)(e.route.routes)})})}}}]);

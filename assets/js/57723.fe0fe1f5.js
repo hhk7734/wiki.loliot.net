@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwiki_loliot_net=self.webpackChunkwiki_loliot_net||[]).push([[57723],{57723:(e,i,t)=>{t.d(i,{createPieServices:()=>k.f});var k=t(88685);t(19369)}}]);

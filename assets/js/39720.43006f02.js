@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwiki_loliot_net=self.webpackChunkwiki_loliot_net||[]).push([[39720],{39720:(e,i,t)=>{t.d(i,{createArchitectureServices:()=>c.S});var c=t(49936);t(19369)}}]);
