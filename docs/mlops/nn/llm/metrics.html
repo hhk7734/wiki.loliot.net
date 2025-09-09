@@ -21,8 +21,8 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous">
 <script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.6c005a66.css">
-<script src="/assets/js/runtime~main.c7d0b4b6.js" defer="defer"></script>
-<script src="/assets/js/main.9dc208ad.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.2b3bf402.js" defer="defer"></script>
+<script src="/assets/js/main.625ec255.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -41,12 +41,22 @@
 <li>e.g. P90 TTFT &lt; 1 s</li>
 </ul>
 </li>
+<li>Normalized Time Per Output Token (NTPOT)<!-- -->
+<ul>
+<li>E2EL / OSL</li>
+</ul>
+</li>
 <li>Time Per Output Token (TPOT)<!-- -->
 <ul>
-<li>Inter-Token Latency (ITL)</li>
+<li>(E2EL - TTFT) / (OSL - 1)을 의미합니다.</li>
+<li>e.g. P90 TPOT &lt; 200 ms</li>
+</ul>
+</li>
+<li>Inter-Token Latency (ITL)<!-- -->
+<ul>
+<li>Output Token 사이의 Latency를 의미합니다.</li>
 <li>Token-to-Token Latency (TTL)</li>
 <li>Time Between Tokens (TBT)</li>
-<li>e.g. P90 TPOT &lt; 200 ms</li>
 </ul>
 </li>
 <li>End-to-End Latency (E2EL)</li>
@@ -63,6 +73,6 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="kv-cache">KV cache<a href="#kv-cache" class="hash-link" aria-label="KV cache에 대한 직접 링크" title="KV cache에 대한 직접 링크">​</a></h2>
 <ul>
 <li>GPU KV cache usage</li>
-</ul></div><br><div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5199357432848758" data-ad-slot="5326538900" data-ad-layout="" data-ad-layout-key="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/hhk7734/wiki/tree/main/docs/mlops/nn/llm/metrics.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">최종 수정: <!-- --> <b><time datetime="2025-09-02T16:56:56.000Z" itemprop="dateModified">2025년 9월 2일</time></b>에</span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/mlops/nn/llm/pragmatic-disaggregation"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">Pragmatic Disaggregation (2506)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#token" class="table-of-contents__link toc-highlight">Token</a></li><li><a href="#latency" class="table-of-contents__link toc-highlight">Latency</a></li><li><a href="#throughput" class="table-of-contents__link toc-highlight">Throughput</a></li><li><a href="#kv-cache" class="table-of-contents__link toc-highlight">KV cache</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2020-2025 HandS. Built with Docusaurus.</div></div></div></footer></div>
+</ul></div><br><div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5199357432848758" data-ad-slot="5326538900" data-ad-layout="" data-ad-layout-key="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/hhk7734/wiki/tree/main/docs/mlops/nn/llm/metrics.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">최종 수정: <!-- --> <b><time datetime="2025-09-09T16:33:45.000Z" itemprop="dateModified">2025년 9월 9일</time></b>에</span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/mlops/nn/llm/pragmatic-disaggregation"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">Pragmatic Disaggregation (2506)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#token" class="table-of-contents__link toc-highlight">Token</a></li><li><a href="#latency" class="table-of-contents__link toc-highlight">Latency</a></li><li><a href="#throughput" class="table-of-contents__link toc-highlight">Throughput</a></li><li><a href="#kv-cache" class="table-of-contents__link toc-highlight">KV cache</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2020-2025 HandS. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
