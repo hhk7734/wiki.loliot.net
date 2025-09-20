@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwiki_loliot_net=self.webpackChunkwiki_loliot_net||[]).push([[73956],{73956:(e,i,t)=>{t.d(i,{createRadarServices:()=>a.f});var a=t(2852);t(58198)}}]);

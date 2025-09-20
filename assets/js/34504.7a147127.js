@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwiki_loliot_net=self.webpackChunkwiki_loliot_net||[]).push([[34504],{34504:(e,i,t)=>{t.d(i,{createTreemapServices:()=>k.d});var k=t(43758);t(58198)}}]);
