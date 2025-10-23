@@ -2,7 +2,7 @@
 <html lang="ko" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-mcu/avr/avr-i2c" data-has-hydrated="false">
 <head>
 <meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.1">
+<meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">AVR I2C | lol-IoT by HHK</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://wiki.loliot.net/docs/mcu/avr/avr-i2c"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="AVR I2C | lol-IoT by HHK"><meta data-rh="true" name="description" content="AVR I2C"><meta data-rh="true" property="og:description" content="AVR I2C"><meta data-rh="true" name="keywords" content="AVR,I2C"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://wiki.loliot.net/docs/mcu/avr/avr-i2c"><link data-rh="true" rel="alternate" href="https://wiki.loliot.net/docs/mcu/avr/avr-i2c" hreflang="ko"><link data-rh="true" rel="alternate" href="https://wiki.loliot.net/docs/mcu/avr/avr-i2c" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"I2C","item":"https://wiki.loliot.net/docs/mcu/avr/avr-i2c"}]}</script><link rel="preconnect" href="https://www.google-analytics.com">
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-82937088-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview")</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
@@ -20,9 +20,9 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous">
-<script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.1d3da487.css">
-<script src="/assets/js/runtime~main.c311bca5.js" defer="defer"></script>
-<script src="/assets/js/main.256a9381.js" defer="defer"></script>
+<script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.a12da69f.css">
+<script src="/assets/js/runtime~main.bcf0f36e.js" defer="defer"></script>
+<script src="/assets/js/main.cf0007f9.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -33,72 +33,72 @@
 <div class="theme-admonition theme-admonition-danger admonition_xJq3 alert alert--danger"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>위험</div><div class="admonitionContent_BuS1"><p>SDA, SCL 선은 아래 그림처럼 Pull-up저항을 연결해야 합니다.</p></div></div>
 <center><img src="/img/mcu/avr/avr-i2c-bus-interconnection.png"></center>
 <p>주소 데이터는 slave 주소 7 비트와 read/write 1 비트로 구성되어 있습니다.(10 비트 주소를 갖는 경우도 있습니다.) R/W 비트가 1 이면 slave -&gt; master, 0 이면 master -&gt; slave 방향으로 데이터가 전송됩니다.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="abbreviation">Abbreviation<a href="#abbreviation" class="hash-link" aria-label="Abbreviation에 대한 직접 링크" title="Abbreviation에 대한 직접 링크" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="abbreviation">Abbreviation<a href="#abbreviation" class="hash-link" aria-label="Abbreviation에 대한 직접 링크" title="Abbreviation에 대한 직접 링크" translate="no">​</a></h2>
 <ul>
-<li><strong>S</strong>: Start condition</li>
-<li><strong>Rs</strong>: Repeated start condition</li>
-<li><strong>R</strong>: Read bit (High level at SDA)</li>
-<li><strong>W</strong>: Wriet bit (Low level at SDA)</li>
-<li><strong>ACK</strong>: ACKnowledge bit (Low level at SDA)</li>
-<li><strong>NACK</strong>: Not ACKnowledge bit (High levle at SDA)</li>
-<li><strong>Data</strong>: 8-bit data byte</li>
-<li><strong>P</strong>: stoP condition</li>
-<li><strong>SLA</strong>: SLave Adress</li>
+<li class=""><strong>S</strong>: Start condition</li>
+<li class=""><strong>Rs</strong>: Repeated start condition</li>
+<li class=""><strong>R</strong>: Read bit (High level at SDA)</li>
+<li class=""><strong>W</strong>: Wriet bit (Low level at SDA)</li>
+<li class=""><strong>ACK</strong>: ACKnowledge bit (Low level at SDA)</li>
+<li class=""><strong>NACK</strong>: Not ACKnowledge bit (High levle at SDA)</li>
+<li class=""><strong>Data</strong>: 8-bit data byte</li>
+<li class=""><strong>P</strong>: stoP condition</li>
+<li class=""><strong>SLA</strong>: SLave Adress</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="master-모드">Master 모드<a href="#master-모드" class="hash-link" aria-label="Master 모드에 대한 직접 링크" title="Master 모드에 대한 직접 링크" translate="no">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="master---slave">master -&gt; slave<a href="#master---slave" class="hash-link" aria-label="master -&gt; slave에 대한 직접 링크" title="master -&gt; slave에 대한 직접 링크" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="master-모드">Master 모드<a href="#master-모드" class="hash-link" aria-label="Master 모드에 대한 직접 링크" title="Master 모드에 대한 직접 링크" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="master---slave">master -&gt; slave<a href="#master---slave" class="hash-link" aria-label="master -&gt; slave에 대한 직접 링크" title="master -&gt; slave에 대한 직접 링크" translate="no">​</a></h3>
 <p>통신 순서는 <strong>S -&gt; SLA + W -&gt; Data -&gt; ... -&gt; P</strong> 입니다. ...은 여러 개의 데이터를 의미합니다.</p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>정보</div><div class="admonitionContent_BuS1"><p>slave에 있는 레지스터에 값을 쓰고 싶은 경우, 레지스터 주소를 SLRA라고 한다면
 통신 순서는 <strong>S -&gt; SLA + W -&gt; SLRA -&gt; Data -&gt; P</strong> 입니다.
 slave의 레지스터 주소를 보낼 때는 주소를 하나의 Data라고 생각하고 아래에서 Data를 보내는 방법과 동일하게 보내면 됩니다.</p></div></div>
 <p>신호는 전송 중일 때 <code>TWCR</code> 레지스터의 <code>TWINT</code> 비트가 0 이 되고, 전송이 완료되면 1 이 됩니다. 그래서 신호를 전송할 때 마다 <code>TWINT</code> 비트가 1 이 되는 것을 확인해야 합니다.</p>
 <ul>
-<li>S<!-- -->
+<li class="">S<!-- -->
 <ul>
-<li><code>TWCR</code> 레지스터의 <code>TWINT</code>, <code>TWSTA</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
+<li class=""><code>TWCR</code> 레지스터의 <code>TWINT</code>, <code>TWSTA</code>, <code>TWEN</code>   비트를 1 로 설정합니다.</li>
 </ul>
 </li>
-<li>SLA + W<!-- -->
+<li class="">SLA + W<!-- -->
 <ul>
-<li><code>TWDR</code> 레지스 터에 slave의 주소 7 비트와 ,R/W 0(write) 을 씁니다. 예를 들어 1101001 이라는 주소를 갖는 slave가 있다면 <code>TWDR</code> 레지스터에는 11010010을 쓰면 됩니다.</li>
-<li><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
+<li class=""><code>TWDR</code> 레지스터에 slave의 주소 7 비트와 ,R/W 0(write) 을 씁니다. 예를 들어 1101001 이라는 주소를 갖는 slave가 있다면 <code>TWDR</code> 레지스터에는 11010010을 쓰면 됩니다.</li>
+<li class=""><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
 </ul>
 </li>
-<li>Data(transmit)<!-- -->
+<li class="">Data(transmit)<!-- -->
 <ul>
-<li><code>TWDR</code> 레지스터에 8bit 데이터를 씁니다.</li>
-<li><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
+<li class=""><code>TWDR</code> 레지스터에 8bit 데이터를 씁니다.</li>
+<li class=""><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
 </ul>
 </li>
-<li>P<!-- -->
+<li class="">P<!-- -->
 <ul>
-<li><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWSTO</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
-<li>STOP 신호는 <code>TWINT</code> 비트가 1인지 확인하지 않습니다.</li>
+<li class=""><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWSTO</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
+<li class="">STOP 신호는 <code>TWINT</code> 비트가 1인지 확인하지 않습니다.</li>
 </ul>
 </li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="slave---master">slave -&gt; master<a href="#slave---master" class="hash-link" aria-label="slave -&gt; master에 대한 직접 링크" title="slave -&gt; master에 대한 직접 링크" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="slave---master">slave -&gt; master<a href="#slave---master" class="hash-link" aria-label="slave -&gt; master에 대한 직접 링크" title="slave -&gt; master에 대한 직접 링크" translate="no">​</a></h3>
 <p>통신 순서는 <strong>S -&gt; SLA + R -&gt; Data -&gt; ... -&gt; P</strong> 입니다.</p>
 <p>센서를 slave로 사용하는 경우 센서에서 출력될 수 있는 여러개의 값 중 원하는 값을 읽어야 하는 경우가 많습니다. 따라서 센서마다 통신 순서가 달라질 수 있습니다.</p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>정보</div><div class="admonitionContent_BuS1"><p>slave에서 읽고싶은 값의 레지스터 주소를 SLRA라고 한다면 데이터를 읽기 전에 먼저 알려줘야 합니다.
 따라서 <strong>S -&gt; SLA + W -&gt; SLRA -&gt; Rs -&gt; SLA + R -&gt; Data -&gt; ... -&gt; P</strong> 인 통신 순서를 갖게 됩니다.</p></div></div>
 <ul>
-<li>SLA + R<!-- -->
+<li class="">SLA + R<!-- -->
 <ul>
-<li><code>TWDR</code> 레지스터에 slave의 주소 7 비트와 ,R/W 1(read) 을 씁니다. 예를 들어 1101001 이라는 주소를 갖는 slave가 있다면 <code>TWDR</code> 레지스터에는 11010011을 쓰면 됩니다.</li>
-<li><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
+<li class=""><code>TWDR</code> 레지스터에 slave의 주소 7 비트와 ,R/W 1(read) 을 씁니다. 예를 들어 1101001 이라는 주소를 갖는 slave가 있다면 <code>TWDR</code> 레지스터에는 11010011을 쓰면 됩니다.</li>
+<li class=""><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
 </ul>
 </li>
-<li>Data(recieve)<!-- -->
+<li class="">Data(recieve)<!-- -->
 <ul>
-<li><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEA</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
-<li>마지막 데이터를 읽는 경우는 <code>TWINT</code>, <code>TWEN</code> 비트만 1 로 설정합니다.</li>
-<li><code>TWDR</code> 레지스터의 값을 읽습니다.</li>
+<li class=""><code>TWCR</code> 레지스터에 <code>TWINT</code>, <code>TWEA</code>, <code>TWEN</code> 비트를 1 로 설정합니다.</li>
+<li class="">마지막 데이터를 읽는 경우는 <code>TWINT</code>, <code>TWEN</code> 비트만 1 로 설정합니다.</li>
+<li class=""><code>TWDR</code> 레지스터의 값을 읽습니다.</li>
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="통신-오류">통신 오류<a href="#통신-오류" class="hash-link" aria-label="통신 오류에 대한 직접 링크" title="통신 오류에 대한 직접 링크" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="통신-오류">통신 오류<a href="#통신-오류" class="hash-link" aria-label="통신 오류에 대한 직접 링크" title="통신 오류에 대한 직접 링크" translate="no">​</a></h2>
 <p>통신을 할 때, <code>TWCR</code> 레지스터의 <code>TWINT</code> 비트가 1 이 되지 않는 경우 통신이 실패했다는 것을 의미합니다.</p>
-<p>실패의 이유는 <code>TWSR</code> 레지스터를 읽으면 알 수 있습니다. (값에 따른 실패 사유는 datasheet를 참고하면 됩니다.) 실패한 경우, 이를 처리하는 함수를 따로 만들면 됩니다. 단순히 무시해도 되는 경우 <code>TWCR</code>레지스터에 0 을 쓰면 됩니다.</p></div><br><div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5199357432848758" data-ad-slot="5326538900" data-ad-layout="" data-ad-layout-key="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/hhk7734/wiki/tree/main/docs/mcu/avr/avr-i2c.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">최종 수정: <!-- --> <b><time datetime="2024-05-20T03:56:55.000Z" itemprop="dateModified">2024년 5월 20일</time></b>에</span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/mcu/avr/avr-eeprom"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">Internal EEPROM</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#abbreviation" class="table-of-contents__link toc-highlight">Abbreviation</a></li><li><a href="#master-모드" class="table-of-contents__link toc-highlight">Master 모드</a><ul><li><a href="#master---slave" class="table-of-contents__link toc-highlight">master -&gt; slave</a></li><li><a href="#slave---master" class="table-of-contents__link toc-highlight">slave -&gt; master</a></li></ul></li><li><a href="#통신-오류" class="table-of-contents__link toc-highlight">통신 오류</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2020-2025 HandS. Built with Docusaurus.</div></div></div></footer></div>
+<p>실패의 이유는 <code>TWSR</code> 레지스터를 읽으면 알 수 있습니다. (값에 따른 실패 사유는 datasheet를 참고하면 됩니다.) 실패한 경우, 이를 처리하는 함수를 따로 만들면 됩니다. 단순히 무시해도 되는 경우 <code>TWCR</code>레지스터에 0 을 쓰면 됩니다.</p></div><br><div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5199357432848758" data-ad-slot="5326538900" data-ad-layout="" data-ad-layout-key="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/hhk7734/wiki/tree/main/docs/mcu/avr/avr-i2c.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">최종 수정: <!-- --> <b><time datetime="2024-05-20T03:56:55.000Z" itemprop="dateModified">2024년 5월 20일</time></b>에</span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/mcu/avr/avr-eeprom"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">Internal EEPROM</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#abbreviation" class="table-of-contents__link toc-highlight">Abbreviation</a></li><li><a href="#master-모드" class="table-of-contents__link toc-highlight">Master 모드</a><ul><li><a href="#master---slave" class="table-of-contents__link toc-highlight">master -&gt; slave</a></li><li><a href="#slave---master" class="table-of-contents__link toc-highlight">slave -&gt; master</a></li></ul></li><li><a href="#통신-오류" class="table-of-contents__link toc-highlight">통신 오류</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2020-2025 HandS. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
