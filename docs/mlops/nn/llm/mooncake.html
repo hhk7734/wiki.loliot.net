@@ -21,8 +21,8 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous">
 <script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.a12da69f.css">
-<script src="/assets/js/runtime~main.8dbec911.js" defer="defer"></script>
-<script src="/assets/js/main.cb1a97bc.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.c1bdff00.js" defer="defer"></script>
+<script src="/assets/js/main.c8bc65c5.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -36,12 +36,18 @@
 <p>Mooncake는 다음 Service Level Objectives (SLOs)를 고려하여 디자인되었습니다.</p>
 <ul>
 <li class="">Time To First Token (TTFT)</li>
-<li class="">Time Between Tokens (TBT)</li>
+<li class="">Time Between Tokens (TBT) == Inter-Token Latency (ITL)</li>
 </ul>
 <p>이를 만족시키기 위해</p>
 <ul>
-<li class="">Prefill Pool은 KV cache를 최대한 재활용하여 각 요청에 대한 컴퓨팅 시간을 단축해야 합 니다.</li>
+<li class="">Prefill Pool은 KV cache를 최대한 재활용하여 각 요청에 대한 컴퓨  팅 시간을 단축해야 합니다.</li>
 <li class="">Decode Pool은 각 배치의 토큰 수를 최대한 늘려서 Model FLOPs Utilization (MFU)를 높여야 합니다.</li>
+</ul>
+<p><strong>Conductor</strong>는 이 분산된 컴포넌트들을 조율하는 글로벌 스케줄러입니다.</p>
+<ul>
+<li class=""><strong>Request Dispatching</strong>: 현재 KVCache와 워크로드의 분포를 기반으로 prefill/decode 인스턴스 쌍을 선택하여 요청을 분배합니다.</li>
+<li class=""><strong>KVCache Management</strong>: KVCache 블록의 미래 사용량을 예측하여 복제(replicate) 및 스왑(swap)을 수행합니다. 가장 자주 사용되는 블록(hottest)은 혼잡을 피하기 위해 여러 노드에 복제하고, 덜 사용되는 블록(coldest)은 비용 절감을 위해 swap out 합니다.</li>
+<li class=""><strong>Overload Handling</strong>: 시스템 부하가 높을 때, prefill 단계를 마친 후 디코딩 슬롯이 없을 것으로 예상되면 낭비를 막기 위해 요청을 조기 거절(early rejection)하는 역할도 수행합니다.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="overview-of-mooncakes-disaggregated-architecture">Overview of Mooncake&#x27;s Disaggregated Architecture<a href="#overview-of-mooncakes-disaggregated-architecture" class="hash-link" aria-label="Overview of Mooncake&#x27;s Disaggregated Architecture에 대한 직접 링크" title="Overview of Mooncake&#x27;s Disaggregated Architecture에 대한 직접 링크" translate="no">​</a></h2>
 <figure><center><img src="/img/mlops/nn/llm/mooncake-kv-cache-pool.png"><br><figcaption><a href="https://arxiv.org/html/2407.00079v3" target="_blank" rel="noopener noreferrer" class="">Figure 3: The KVCache pool in CPU memory.</a></figcaption></center></figure>
@@ -58,38 +64,16 @@
 <li class="">Least Recently Used (LRU), Least Frequently Used (LFU) 등 요청 패턴에 따라 block을 축출합니다.</li>
 <li class="">GPU 연산과 KV cache pool 관리는 병렬로 수행됩니다.</li>
 </ul>
-<p>요청이 들어왔을 때 작업 과정은 아래와 같습니다.</p>
-<ul>
-<li class="">요청을 토큰화 합니다.</li>
-<li class="">Conductor에서 PD instance를 선택하여 라우팅합니다.<!-- -->
-<ul>
-<li class="">block ID를 계산하여 prefix cache hit 정보를 수집합니다.</li>
-<li class="">prefix cache 전송시간, prefill 시간, 큐 대기시간 등을 고려합니다.</li>
-<li class="">모든 정보를 고려했을 때 SLOs를 만족시키기 어렵다고 판단하면 요청을 거절합니다.</li>
-</ul>
-</li>
-<li class="">Prefill instance에서 KV cache를 생성합니다.<!-- -->
-<ul>
-<li class="">토큰들과 block ID들을 요청으로 받습니다.</li>
-<li class="">block ID를 바탕으로 prefix cache를 KV cache pool에서 GPU HBM으로 전송합니다.</li>
-<li class="">KV cache를 생성합니다.</li>
-<li class="">동시에 KV cache pool에 저장하면서, Messenger가 KV cache를 chunk 단위로 Decode instance로 전송합니다. (chunk size &gt;= 1000)</li>
-</ul>
-</li>
-<li class="">Decode instance에서 토큰을 생성합니다.<!-- -->
-<ul>
-<li class="">요청을 continuous batching 방식으로 다음 배치에 추가합니다. 이 떄, 로컬 스케줄러가 TBT SLO를 만족할지 한 번 더 확인합니다.</li>
-<li class="">토큰을 생성합니다.</li>
-</ul>
-</li>
-</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="kvcache-centric-scheduling">KVCache-centric Scheduling<a href="#kvcache-centric-scheduling" class="hash-link" aria-label="KVCache-centric Scheduling에 대한 직접 링크" title="KVCache-centric Scheduling에 대한 직접 링크" translate="no">​</a></h2>
+<p>Mooncake는 단순히 부하 분산(load balancing)을 하는 것을 넘어서, prefix cache aware 와 load aware 스케줄링을 수행합니다.</p>
+<!-- -->
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sampled-real-wrold-request-trace">Sampled Real-wrold Request Trace<a href="#sampled-real-wrold-request-trace" class="hash-link" aria-label="Sampled Real-wrold Request Trace에 대한 직접 링크" title="Sampled Real-wrold Request Trace에 대한 직접 링크" translate="no">​</a></h2>
 <ul>
 <li class="">Input Sequence Length (ISL)의 평균은 7590 이였습니다.</li>
 <li class="">Output Sequence Length (OSL)의 평균은 182 였습니다.</li>
 <li class="">KV cache 용량을 1000 blocks에서 50000 blocks로 올렸을 때 cache hit ratio는 30%에서 50%로 증가했습니다.</li>
 <li class="">그 이상 용량을 늘리는 경우 영향은 미미했지만 샘플링 된 결과이므로 용량은 크면 클 수록 cache hit ratio가 증가할 가능성이 있습니다.</li>
-<li class="">특정 block들은 수만 번 재사용되는 반면, 50%의 block이 거의 재사용되지 않았습니다.</li>
-</ul></div><br><div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5199357432848758" data-ad-slot="5326538900" data-ad-layout="" data-ad-layout-key="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/hhk7734/wiki/tree/main/docs/mlops/nn/llm/mooncake.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">최종 수정: <!-- --> <b><time datetime="2025-11-03T15:12:57.000Z" itemprop="dateModified">2025년 11월 3일</time></b>에</span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/mlops/nn/llm/kvcache"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">KV Cache</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/mlops/nn/llm/deepseek-v3"><div class="pagination-nav__sublabel">다음</div><div class="pagination-nav__label">DeepSeek-V3 (2412)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction" class="table-of-contents__link toc-highlight">Introduction</a></li><li><a href="#overview-of-mooncakes-disaggregated-architecture" class="table-of-contents__link toc-highlight">Overview of Mooncake&#39;s Disaggregated Architecture</a></li><li><a href="#sampled-real-wrold-request-trace" class="table-of-contents__link toc-highlight">Sampled Real-wrold Request Trace</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2020-2026 HandS. Built with Docusaurus.</div></div></div></footer></div>
+<li class="">특정 block들은 수만 번 재사용되  는 반면, 50%의 block이 거의 재사용되지 않았습니다.</li>
+</ul></div><br><div><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5199357432848758" data-ad-slot="5326538900" data-ad-layout="" data-ad-layout-key="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/hhk7734/wiki/tree/main/docs/mlops/nn/llm/mooncake.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">최종 수정: <!-- --> <b><time datetime="2026-02-01T17:48:29.000Z" itemprop="dateModified">2026년 2월 1일</time></b>에</span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/mlops/nn/llm/kvcache"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">KV Cache</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/mlops/nn/llm/deepseek-v3"><div class="pagination-nav__sublabel">다음</div><div class="pagination-nav__label">DeepSeek-V3 (2412)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction" class="table-of-contents__link toc-highlight">Introduction</a></li><li><a href="#overview-of-mooncakes-disaggregated-architecture" class="table-of-contents__link toc-highlight">Overview of Mooncake&#39;s Disaggregated Architecture</a></li><li><a href="#kvcache-centric-scheduling" class="table-of-contents__link toc-highlight">KVCache-centric Scheduling</a></li><li><a href="#sampled-real-wrold-request-trace" class="table-of-contents__link toc-highlight">Sampled Real-wrold Request Trace</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2020-2026 HandS. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
