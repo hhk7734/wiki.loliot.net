@@ -2,7 +2,7 @@
 <html lang="ko" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-mlops/mlops/ansible/config" data-has-hydrated="false">
 <head>
 <meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
+<meta name="generator" content="Docusaurus v3.10.0">
 <title data-rh="true">Ansible 설정 | lol-IoT by HHK</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://wiki.loliot.net/docs/mlops/mlops/ansible/config"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Ansible 설정 | lol-IoT by HHK"><meta data-rh="true" name="description" content="Ansible 설정"><meta data-rh="true" property="og:description" content="Ansible 설정"><meta data-rh="true" name="keywords" content="Ansible,설정"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://wiki.loliot.net/docs/mlops/mlops/ansible/config"><link data-rh="true" rel="alternate" href="https://wiki.loliot.net/docs/mlops/mlops/ansible/config" hreflang="ko"><link data-rh="true" rel="alternate" href="https://wiki.loliot.net/docs/mlops/mlops/ansible/config" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"설정","item":"https://wiki.loliot.net/docs/mlops/mlops/ansible/config"}]}</script><link rel="preconnect" href="https://www.google-analytics.com">
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-82937088-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview")</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
@@ -20,11 +20,11 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous">
-<script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.084f9137.css">
-<script src="/assets/js/runtime~main.7eef4965.js" defer="defer"></script>
-<script src="/assets/js/main.7dbcdc1e.js" defer="defer"></script>
+<script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.d63248eb.css">
+<script src="/assets/js/runtime~main.dc463dba.js" defer="defer"></script>
+<script src="/assets/js/main.ddec5fab.js" defer="defer"></script>
 </head>
-<body class="navigation-with-keyboard">
+<body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
@@ -40,7 +40,7 @@
 <ul>
 <li class=""><a href="https://docs.ansible.com/ansible/latest/cli/ansible-config.html" target="_blank" rel="noopener noreferrer" class="">ansible-config</a></li>
 </ul>
-<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token plain">ansible-config init </span><span class="token operator" style="color:rgb(212, 212, 212)">&lt;</span><span class="token plain">flags</span><span class="token operator" style="color:rgb(212, 212, 212)">&gt;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(212, 212, 212)">&gt;</span><span class="token plain"> ansible.cfg</span><br></span></code></pre></div></div>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#9CDCFE"><span class="token plain">ansible-config init </span><span class="token operator" style="color:rgb(212, 212, 212)">&lt;</span><span class="token plain">flags</span><span class="token operator" style="color:rgb(212, 212, 212)">&gt;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(212, 212, 212)">&gt;</span><span class="token plain"> ansible.cfg</span><br></div></code></pre></div></div>
 <ul>
 <li class=""><code>&lt;flags&gt;</code>
 <ul>
@@ -48,7 +48,7 @@
 </ul>
 </li>
 </ul>
-<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token plain">ansible-config dump </span><span class="token operator" style="color:rgb(212, 212, 212)">&lt;</span><span class="token plain">flags</span><span class="token operator" style="color:rgb(212, 212, 212)">&gt;</span><br></span></code></pre></div></div>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#9CDCFE"><span class="token plain">ansible-config dump </span><span class="token operator" style="color:rgb(212, 212, 212)">&lt;</span><span class="token plain">flags</span><span class="token operator" style="color:rgb(212, 212, 212)">&gt;</span><br></div></code></pre></div></div>
 <p><code>ansible-config dump</code>는 환경변수와 파일 등에 의해 설정된 현재 설정을 출력합니다.</p>
 <ul>
 <li class=""><code>&lt;flags&gt;</code>

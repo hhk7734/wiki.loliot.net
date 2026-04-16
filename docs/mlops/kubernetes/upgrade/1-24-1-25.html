@@ -2,7 +2,7 @@
 <html lang="ko" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-mlops/kubernetes/upgrade/1-24-1-25" data-has-hydrated="false">
 <head>
 <meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
+<meta name="generator" content="Docusaurus v3.10.0">
 <title data-rh="true">1.24 to 1.25 | lol-IoT by HHK</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://wiki.loliot.net/docs/mlops/kubernetes/upgrade/1-24-1-25"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="1.24 to 1.25 | lol-IoT by HHK"><meta data-rh="true" name="description" content="upgrade from 1.24 to 1.25"><meta data-rh="true" property="og:description" content="upgrade from 1.24 to 1.25"><meta data-rh="true" name="keywords" content="kubernetes,upgrade,1.24,1.25"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://wiki.loliot.net/docs/mlops/kubernetes/upgrade/1-24-1-25"><link data-rh="true" rel="alternate" href="https://wiki.loliot.net/docs/mlops/kubernetes/upgrade/1-24-1-25" hreflang="ko"><link data-rh="true" rel="alternate" href="https://wiki.loliot.net/docs/mlops/kubernetes/upgrade/1-24-1-25" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"1.24 to 1.25","item":"https://wiki.loliot.net/docs/mlops/kubernetes/upgrade/1-24-1-25"}]}</script><link rel="preconnect" href="https://www.google-analytics.com">
 <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-82937088-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview")</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
@@ -20,11 +20,11 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous">
-<script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.084f9137.css">
-<script src="/assets/js/runtime~main.7eef4965.js" defer="defer"></script>
-<script src="/assets/js/main.7dbcdc1e.js" defer="defer"></script>
+<script src="https://www.draw.io/js/viewer.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.d63248eb.css">
+<script src="/assets/js/runtime~main.dc463dba.js" defer="defer"></script>
+<script src="/assets/js/main.ddec5fab.js" defer="defer"></script>
 </head>
-<body class="navigation-with-keyboard">
+<body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
@@ -32,7 +32,7 @@
 <li class=""><a href="https://kubernetes.io/blog/2022/08/23/kubernetes-v1-25-release/" target="_blank" rel="noopener noreferrer" class="">https://kubernetes.io/blog/2022/08/23/kubernetes-v1-25-release/</a></li>
 <li class=""><a href="https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-25" target="_blank" rel="noopener noreferrer" class="">https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-25</a></li>
 </ul>
-<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token plain">kubent</span><br></span></code></pre></div></div>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#9CDCFE"><span class="token plain">kubent</span><br></div></code></pre></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="eks">EKS<a href="#eks" class="hash-link" aria-label="EKS에 대한 직접 링크" title="EKS에 대한 직접 링크" translate="no">​</a></h2>
 <ul>
 <li class=""><a href="https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html" target="_blank" rel="noopener noreferrer" class="">https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html</a></li>
@@ -41,11 +41,11 @@
 <ul>
 <li class="">클러스터 버전 확인</li>
 </ul>
-<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token plain">kubectl version </span><span class="token parameter variable" style="color:rgb(156, 220, 254)">--short</span><br></span></code></pre></div></div>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#9CDCFE"><span class="token plain">kubectl version </span><span class="token parameter variable" style="color:rgb(156, 220, 254)">--short</span><br></div></code></pre></div></div>
 <ul>
 <li class="">노드 버전이 현재 클러스터 버전과 일치하는지 확인</li>
 </ul>
-<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token plain">kubectl get nodes</span><br></span></code></pre></div></div>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#9CDCFE"><span class="token plain">kubectl get nodes</span><br></div></code></pre></div></div>
 <ul>
 <li class="">EKS 1.25로 업데이트</li>
 <li class="">워커노드 1.25로 교체<!-- -->
