@@ -1,0 +1,33 @@
+{
+  "type": "document",
+  "id": "doc:docs/operation/mlops/workload/deployment/deployment.mdx",
+  "title": "Deployment",
+  "snippet": "## Deployment\n\n- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/\n\n Depl…",
+  "ontology": {
+    "role": "operation",
+    "domain": "mlops",
+    "class": "workload",
+    "instance": "deployment",
+    "aspect": "overview"
+  },
+  "url": "/docs/operation/mlops/workload/deployment",
+  "node_url": "/api/wiki/nodes/doc:docs/operation/mlops/workload/deployment/deployment.mdx.json",
+  "subject": {
+    "id": "subject:mlops:workload:deployment",
+    "title": "Deployment",
+    "ontology": {
+      "domain": "mlops",
+      "class": "workload",
+      "instance": "deployment"
+    },
+    "url": "/docs/operation/mlops/workload/deployment"
+  },
+  "relations": [
+    {
+      "id": "relation:doc:docs/operation/mlops/workload/deployment/deployment.mdx:about_subject:subject:mlops:workload:deployment",
+      "predicate": "about_subject",
+      "other_id": "subject:mlops:workload:deployment",
+      "direction": "outgoing"
+    }
+  ]
+}
