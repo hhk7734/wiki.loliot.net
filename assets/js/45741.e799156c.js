@@ -1,1 +1,0 @@
-(self.webpackChunkwiki_loliot_net=self.webpackChunkwiki_loliot_net||[]).push([[45741],{45741:()=>{}}]);
