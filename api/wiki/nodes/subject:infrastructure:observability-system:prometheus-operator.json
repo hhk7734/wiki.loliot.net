@@ -1,0 +1,137 @@
+{
+  "type": "subject",
+  "id": "subject:infrastructure:observability-system:prometheus-operator",
+  "title": "PromQL",
+  "snippet": "## Data model\n\n- Prometheus / Concepts / Data model\n\n``promql\n# 주석\n[{=\"\"[,=\"\"]}]\n`\n\n- : [a-zA-Z_:][a-zA-Z0-9_:]* 정규식을 만족해야합니다\n- : [a-zA-Z_][a…",
+  "ontology": {
+    "domain": "infrastructure",
+    "class": "observability-system",
+    "instance": "prometheus-operator"
+  },
+  "url": "/docs/infrastructure/observability/prometheus-operator/promql",
+  "node_url": "/api/wiki/nodes/subject:infrastructure:observability-system:prometheus-operator.json",
+  "document_refs": [
+    "doc:docs/infrastructure/observability/prometheus-operator/promql.mdx",
+    "doc:docs/infrastructure/observability/prometheus-operator/alertmanager.mdx",
+    "doc:docs/infrastructure/observability/prometheus-operator/install.mdx",
+    "doc:docs/infrastructure/observability/prometheus-operator/monitor.mdx",
+    "doc:docs/infrastructure/observability/prometheus-operator/prometheus/index.mdx"
+  ],
+  "documents": [
+    {
+      "id": "doc:docs/infrastructure/observability/prometheus-operator/promql.mdx",
+      "title": "PromQL",
+      "url": "/docs/infrastructure/observability/prometheus-operator/promql",
+      "snippet": "## Data model\n\n- Prometheus / Concepts / Data model\n\n``promql\n# 주석\n[{=\"\"[,=\"\"]}]\n`\n\n- : [a-zA-Z_:][a-zA-Z0-9_:]* 정규식을 만족해야합니다\n- : [a-zA-Z_][a…",
+      "ontology": {
+        "role": "entity",
+        "domain": "infrastructure",
+        "class": "observability-system",
+        "instance": "prometheus-operator",
+        "aspect": "promql"
+      }
+    },
+    {
+      "id": "doc:docs/infrastructure/observability/prometheus-operator/alertmanager.mdx",
+      "title": "Prometheus Operator Alertmanager CR 생성하기",
+      "url": "/docs/infrastructure/observability/prometheus-operator/alertmanager",
+      "snippet": "## Alertmanager\n\n- Prometheus Operator / API reference # Alertmanager\n\n``yaml\napiVersion: monit…",
+      "ontology": {
+        "role": "operation",
+        "domain": "infrastructure",
+        "class": "observability-system",
+        "instance": "prometheus-operator",
+        "aspect": "alertmanager"
+      }
+    },
+    {
+      "id": "doc:docs/infrastructure/observability/prometheus-operator/install.mdx",
+      "title": "prometheus-operator",
+      "url": "/docs/infrastructure/observability/prometheus-operator/install",
+      "snippet": "## Kubernetes 호환성\n\n- https://github.com/prometheus-operator/kube-prometheus#kubernetes-compatibility-matrix\n\n## 설치\n\n- kube-prometheus-stack…",
+      "ontology": {
+        "role": "operation",
+        "domain": "infrastructure",
+        "class": "observability-system",
+        "instance": "prometheus-operator",
+        "aspect": "install"
+      }
+    },
+    {
+      "id": "doc:docs/infrastructure/observability/prometheus-operator/monitor.mdx",
+      "title": "ServiceMonitor/PodMonitor",
+      "url": "/docs/infrastructure/observability/prometheus-operator/monitor",
+      "snippet": "## ServiceMonitor\n\n- Prometheus Operator / Docs / API reference # ServiceMonitor\n- Prometheus / D…",
+      "ontology": {
+        "role": "operation",
+        "domain": "infrastructure",
+        "class": "observability-system",
+        "instance": "prometheus-operator",
+        "aspect": "monitor"
+      }
+    },
+    {
+      "id": "doc:docs/infrastructure/observability/prometheus-operator/prometheus/index.mdx",
+      "title": "Prometheus",
+      "url": "/docs/infrastructure/observability/prometheus-operator/prometheus",
+      "snippet": "Prometheus Operator Architecture\n\n## ServiceAccount\n\n- Prometheus Operator / Getting Start…",
+      "ontology": {
+        "role": "operation",
+        "domain": "infrastructure",
+        "class": "observability-system",
+        "instance": "prometheus-operator",
+        "aspect": "prometheus"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation:doc:docs/infrastructure/observability/prometheus-operator/promql.mdx:about_subject:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/infrastructure/observability/prometheus-operator/promql.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/infrastructure/observability/prometheus-operator/alertmanager.mdx:about_subject:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/infrastructure/observability/prometheus-operator/alertmanager.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/infrastructure/observability/prometheus-operator/install.mdx:about_subject:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/infrastructure/observability/prometheus-operator/install.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/infrastructure/observability/prometheus-operator/monitor.mdx:about_subject:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/infrastructure/observability/prometheus-operator/monitor.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/infrastructure/observability/prometheus-operator/prometheus/index.mdx:about_subject:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/infrastructure/observability/prometheus-operator/prometheus/index.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:subject:infrastructure:observability-system:kube-state-metrics:related_to:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "related_to",
+      "other_id": "subject:infrastructure:observability-system:kube-state-metrics",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:subject:infrastructure:observability-system:node-exporter:related_to:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "related_to",
+      "other_id": "subject:infrastructure:observability-system:node-exporter",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:subject:infrastructure:observability-system:thanos:related_to:subject:infrastructure:observability-system:prometheus-operator",
+      "predicate": "related_to",
+      "other_id": "subject:infrastructure:observability-system:thanos",
+      "direction": "incoming"
+    }
+  ]
+}

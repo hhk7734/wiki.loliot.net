@@ -12,7 +12,13 @@
   "node_url": "/api/wiki/nodes/subject:language:programming-language:python.json",
   "document_refs": [
     "doc:docs/language/python/overview.mdx",
+    "doc:docs/language/python/asyncio.mdx",
+    "doc:docs/language/python/contextvar.mdx",
+    "doc:docs/language/python/database.mdx",
+    "doc:docs/language/python/exception.mdx",
+    "doc:docs/language/python/logger.mdx",
     "doc:docs/language/python/package-repository.mdx",
+    "doc:docs/language/python/pytest.mdx",
     "doc:docs/language/python/linting-formatting/overview.mdx",
     "doc:docs/language/python/package-sphinx.mdx",
     "doc:docs/language/python/version/overview.mdx"
@@ -32,6 +38,71 @@
       }
     },
     {
+      "id": "doc:docs/language/python/asyncio.mdx",
+      "title": "asyncio",
+      "url": "/docs/language/python/asyncio",
+      "snippet": "## EventLoop in Thread\n\n``python\n\n# 메인 스레드에서 자식 스레드의 이벤트 루프를 제어\nnew_loop = asyncio.new_event_loop()\n\ndef run_loop(loop: asyncio.AbstractEventLoop) -> None:\n # 현재 …",
+      "ontology": {
+        "role": "concept",
+        "domain": "language",
+        "class": "programming-language",
+        "instance": "python",
+        "aspect": "asyncio"
+      }
+    },
+    {
+      "id": "doc:docs/language/python/contextvar.mdx",
+      "title": "contextvar",
+      "url": "/docs/language/python/contextvar",
+      "snippet": "## contextvars.ContextVar\n\n파라미터를 통해 함수를 호출해가며 값을 전달할 때, 첫 번째 인자를 전달한 함수로부터\n\n- 콜 스택이 깊어질 수록\n- …",
+      "ontology": {
+        "role": "concept",
+        "domain": "language",
+        "class": "programming-language",
+        "instance": "python",
+        "aspect": "contextvar"
+      }
+    },
+    {
+      "id": "doc:docs/language/python/database.mdx",
+      "title": "Long-running Tasks Database Schema",
+      "url": "/docs/language/python/database",
+      "snippet": "장기 실행 작업을 비동기로 관리할 때, 단순히 비즈니스 로직만 고려한다면 태스크의 성공/실패 여부와 결과만 기록하면 될 수 있습니다.\n\n하지만, 미처 처리하지 못한 에러에 대한 디버깅, 방어적인 시스템 관리, 사용자 분석 등 이유로 비즈니스 로직에서 사용하지 않더라도 나중을 위해 저장하",
+      "ontology": {
+        "role": "concept",
+        "domain": "language",
+        "class": "programming-language",
+        "instance": "python",
+        "aspect": "database"
+      }
+    },
+    {
+      "id": "doc:docs/language/python/exception.mdx",
+      "title": "Exception",
+      "url": "/docs/language/python/exception",
+      "snippet": "## try-except\n\n``python\ntry:\n ...\nexcept Exception as e:\n ...\nelse:\n ...\nfinally:\n ...\n`\n\n| 정상 | | 비정상 |\n| :--: | :-----: | :----:…",
+      "ontology": {
+        "role": "concept",
+        "domain": "language",
+        "class": "programming-language",
+        "instance": "python",
+        "aspect": "exception"
+      }
+    },
+    {
+      "id": "doc:docs/language/python/logger.mdx",
+      "title": "Python Logger",
+      "url": "/docs/language/python/logger",
+      "snippet": "…| 프로세스 이름 |\n| %(thread)d | 쓰레드 ID |\n| %(threadName)s | 쓰레드 이름 |\n\n## 함수\n\n`python\nlogger = logging.getLogger(name=None)\n`\n\n- name: 특별한 경우가 아니면 __name__ 설정\n - __name__은 …",
+      "ontology": {
+        "role": "concept",
+        "domain": "language",
+        "class": "programming-language",
+        "instance": "python",
+        "aspect": "logger"
+      }
+    },
+    {
       "id": "doc:docs/language/python/package-repository.mdx",
       "title": "Python Package Repository",
       "url": "/docs/language/python/package-repository",
@@ -42,6 +113,19 @@
         "class": "programming-language",
         "instance": "python",
         "aspect": "package-repository"
+      }
+    },
+    {
+      "id": "doc:docs/language/python/pytest.mdx",
+      "title": "pytest",
+      "url": "/docs/language/python/pytest",
+      "snippet": "## pytest\n\n``shell\npytest [options] [file_or_dir ...]\n`\n\n## 설정\n\n- pytest: Configuration\n\n…",
+      "ontology": {
+        "role": "concept",
+        "domain": "language",
+        "class": "programming-language",
+        "instance": "python",
+        "aspect": "pytest"
       }
     },
     {
@@ -92,9 +176,45 @@
       "direction": "incoming"
     },
     {
+      "id": "relation:doc:docs/language/python/asyncio.mdx:about_subject:subject:language:programming-language:python",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/language/python/asyncio.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/language/python/contextvar.mdx:about_subject:subject:language:programming-language:python",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/language/python/contextvar.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/language/python/database.mdx:about_subject:subject:language:programming-language:python",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/language/python/database.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/language/python/exception.mdx:about_subject:subject:language:programming-language:python",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/language/python/exception.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/language/python/logger.mdx:about_subject:subject:language:programming-language:python",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/language/python/logger.mdx",
+      "direction": "incoming"
+    },
+    {
       "id": "relation:doc:docs/language/python/package-repository.mdx:about_subject:subject:language:programming-language:python",
       "predicate": "about_subject",
       "other_id": "doc:docs/language/python/package-repository.mdx",
+      "direction": "incoming"
+    },
+    {
+      "id": "relation:doc:docs/language/python/pytest.mdx:about_subject:subject:language:programming-language:python",
+      "predicate": "about_subject",
+      "other_id": "doc:docs/language/python/pytest.mdx",
       "direction": "incoming"
     },
     {
@@ -116,87 +236,87 @@
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-concurrent-futures:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:concurrent-futures:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-concurrent-futures",
+      "other_id": "subject:language:library:concurrent-futures",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-ctypes:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:ctypes:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-ctypes",
+      "other_id": "subject:language:library:ctypes",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-fastapi:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:fastapi:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-fastapi",
+      "other_id": "subject:language:library:fastapi",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-gpiod:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:gpiod:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-gpiod",
+      "other_id": "subject:language:library:gpiod",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-grpc:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:grpc:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-grpc",
+      "other_id": "subject:language:library:grpc",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-mpi4py:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:mpi4py:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-mpi4py",
+      "other_id": "subject:language:library:mpi4py",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-opencv:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:opencv:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-opencv",
+      "other_id": "subject:language:library:opencv",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-opentelemetry:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:opentelemetry:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-opentelemetry",
+      "other_id": "subject:language:library:opentelemetry",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-pybluez:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:pybluez:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-pybluez",
+      "other_id": "subject:language:library:pybluez",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-pyside2:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:pyside2:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-pyside2",
+      "other_id": "subject:language:library:pyside2",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-socket:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:socket:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-socket",
+      "other_id": "subject:language:library:socket",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-sqlalchemy:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:sqlalchemy:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-sqlalchemy",
+      "other_id": "subject:language:library:sqlalchemy",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-tkinter:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:tkinter:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-tkinter",
+      "other_id": "subject:language:library:tkinter",
       "direction": "incoming"
     },
     {
-      "id": "relation:subject:language:library:python-yolov4:depends_on:subject:language:programming-language:python",
+      "id": "relation:subject:language:library:yolov4:depends_on:subject:language:programming-language:python",
       "predicate": "depends_on",
-      "other_id": "subject:language:library:python-yolov4",
+      "other_id": "subject:language:library:yolov4",
       "direction": "incoming"
     }
   ]
