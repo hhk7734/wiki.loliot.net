@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki_loliot_net=globalThis.webpackChunkwiki_loliot_net||[]).push([[53214],{53214(e,i,l){l.d(i,{createPacketServices:()=>t.$});var t=l(75893);l(72519)}}]);

@@ -2,7 +2,7 @@
   "type": "subject",
   "id": "subject:science:llm-technique:multi-token-prediction",
   "title": "Multi-Token Prediction",
-  "snippet": "## Multi-Token Prediction\n\n- Better & Faster Large Language Models via Multi-token Prediction\n- DeepSeek-…",
+  "description": "Multi-Token Prediction documents overview material for Multi-Token Prediction in the science domain. It explains how MTP adds future-token objectives to standard next-token training, how native MTP modules act as speculative proposers, and how target-model verification accepts or rejects drafted tokens. The page highlights Basic Idea, DeepSeek-V3 MTP, Inference Path, Verification Mechanism, Why It Can Be Faster, and Relation to Speculative Decoding. Important search terms include neural network, large language model, mtp, speculative decoding, logits, causal mask, and multi-token-prediction, helping readers connect training objectives, serving behavior, and practical limits.",
   "ontology": {
     "domain": "science",
     "class": "llm-technique",
@@ -18,7 +18,7 @@
       "id": "doc:docs/science/llm/mtp/overview.mdx",
       "title": "Multi-Token Prediction",
       "url": "/docs/science/llm/mtp/overview",
-      "snippet": "## Multi-Token Prediction\n\n- Better & Faster Large Language Models via Multi-token Prediction\n- DeepSeek-…",
+      "description": "Multi-Token Prediction documents overview material for Multi-Token Prediction in the science domain. It explains how MTP adds future-token objectives to standard next-token training, how native MTP modules act as speculative proposers, and how target-model verification accepts or rejects drafted tokens. The page highlights Basic Idea, DeepSeek-V3 MTP, Inference Path, Verification Mechanism, Why It Can Be Faster, and Relation to Speculative Decoding. Important search terms include neural network, large language model, mtp, speculative decoding, logits, causal mask, and multi-token-prediction, helping readers connect training objectives, serving behavior, and practical limits.",
       "ontology": {
         "role": "concept",
         "domain": "science",

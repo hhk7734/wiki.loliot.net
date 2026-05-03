@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki_loliot_net=globalThis.webpackChunkwiki_loliot_net||[]).push([[1947],{1947(e,i,l){l.d(i,{createWardleyServices:()=>a.J});var a=l(22295);l(72519)}}]);

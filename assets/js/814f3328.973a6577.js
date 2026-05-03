@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwiki_loliot_net=globalThis.webpackChunkwiki_loliot_net||[]).push([[67472],{55513(t){t.exports=JSON.parse('{"title":"Recent posts","items":[]}')}}]);
